@@ -27,13 +27,65 @@ tokenA = {
     }
 }
 
-all = [tokenA]
+tokenB = {
+    "name" : "ETH",
+    "narrative" : "L1",
+    "narrative2" : "none",
+    "buy" : {
+        "bottom" : 800,
+        "top" : 1500
+    },
+    "sell" : {
+        "bottom" : 5000,
+        "top" : 10000
+    },
+    "risk" : "low",
+    "pot" : "x5",
+    "big" : "yes",
+    "stra" : {
+        "yon" : "yes",
+        "sRisk" : "mid",
+        "APY" : "3%",
+        "action" : "lend",
+        "plat" : "aave",
+        "block" : "ethereumOrL2"
+    }
+}
 
-print(all[0]["name"])
+tokenC = {
+    "name" : "ADA",
+    "narrative" : "L1",
+    "narrative2" : "none",
+    "buy" : {
+        "bottom" : 0.3,
+        "top" : 0.75
+    },
+    "sell" : {
+        "bottom" : 2,
+        "top" : 5
+    },
+    "risk" : "low",
+    "pot" : "x10",
+    "big" : "yes",
+    "stra" : {
+        "yon" : "yes",
+        "sRisk" : "mid",
+        "APY" : "3%",
+        "action" : "lend",
+        "plat" : "aave",
+        "block" : "ethereumOrL2"
+    }
+}
+
+all = [tokenA, tokenB, tokenC]
+
+for i in all: 
+    print(i["name"])
 
 inversorType = ""
 amountToInvest = 0
 goal = 0 
+level = ""
 
 def setInvestorTypeCons():
     global inversorType
@@ -71,6 +123,17 @@ def setGoal2(): # x10
     i_amount.config(text=f"Initial Amount: ${amountToInvest}")
     print("your Goal is: ", goal)
 
+def set_novel():
+    global level
+    level = "novel"
+
+def set_mid():
+    global level
+    level = "intermediate"
+
+def set_expert():
+    global level
+    level = "expert"
 
 
 app = tk.Tk()
@@ -125,5 +188,15 @@ i_amount.place(x=300, y=185)
 
 goal_text = tk.Label(text="Your Goal: ")
 goal_text.place(x=300, y=210)
+
+nov_but = ttk.Button(text="Novel", command= set_novel)
+nov_but.place(x=600, y=30)
+
+mid = ttk.Button(text="Intermediate", command= set_novel)
+mid.place(x=600, y=70)
+
+exp = ttk.Button(text="Expert", command= set_expert)
+exp.place(x=600, y=1000)
+
 
 app.mainloop()
